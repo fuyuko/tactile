@@ -1,6 +1,15 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q73GR6TKJQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-Q73GR6TKJQ');
+    </script>
     <meta charset='utf-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -19,28 +28,49 @@
       <div class="inner">
 
         <header>
-          <h1>{{ page.title | default: site.title | default: site.github.repository_name }}</h1>
+          <h1><a href="https://fuyuko.net">{{ site.title | default: site.github.repository_name }}</a></h1>
           <h2>{{ page.description | default: site.description | default: site.github.project_tagline }}</h2>
         </header>
-        <section id="downloads" class="clearfix">
-          {% if site.show_downloads %}
-          <a href="{{ site.github.zip_url }}" id="download-zip" class="button"><span>Download .zip</span></a>
-          <a href="{{ site.github.tar_url }}" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
-          {% endif %}
-	{% if site.github.public %}
-	  {% if site.github.is_project_page %}
-          <a href="{{ site.github.repository_url }}" id="view-on-github" class="button"><span>View on GitHub</span></a>
-	  {% else %}
-          <a href="{{ site.github.owner_url }}" id="view-on-github" class="button"><span>View on GitHub</span></a>
-	  {% endif %}
-	{% endif %}
+        {% if site.github.public or site.show_downloads %}
+            <section id="downloads" class="clearfix">
+                {% if site.show_downloads %}
+                    <a href="{{ site.github.zip_url }}" id="download-zip" class="button"><span>Download .zip</span></a>
+                    <a href="{{ site.github.tar_url }}" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+                {% endif %}
+                {% if site.github.public %}
+                    {% if site.github.is_project_page %}
+                        <a href="{{ site.github.repository_url }}" id="view-on-github" class="button"><span>View on GitHub</span></a>
+                    {% else %}
+                        <a href="{{ site.github.owner_url }}" id="view-on-github" class="button"><span>View on GitHub</span></a>
+                    {% endif %}
+                {% endif %}
+                <hr>
+            </section>
+        {% endif %}
+        
+        <section id="nav">
+            <ul>
+                <li><a href="/">home</a></li>
+                <li><a href="/travel">travel</a></li>
+                <li><a href="/resume">resume</a></li>
+            </ul>
         </section>
-        <hr>
+
         <section id="main_content">
           {{ content }}
         </section>
 
         <footer>
+          <!-- contact form -->
+          <form id="my-form" action="https://formspree.io/f/meojnqao" method="POST">
+            <h5>Contact Me</h5>
+            <label>Email:</label>
+            <input type="email" name="email" />
+            <label>Message:</label>
+            <textarea rows="6" name="message" id="message" placeholder="Please enter your message here." required=""></textarea>
+            <button id="my-form-button">Submit</button>
+            <p id="my-form-status"></p>
+          </form>
         {% if site.github.is_project_page %}
           {{ site.title | default: site.github.repository_name }} is maintained by <a href="{{ site.github.owner_url }}">{{ site.github.owner_name }}</a><br>
         {% endif %}
@@ -49,5 +79,38 @@
 
       </div>
     </div>
+    <!-- script for contact form -->
+    <script>
+      var form = document.getElementById("my-form");
+      
+      async function handleSubmit(event) {
+        event.preventDefault();
+        var status = document.getElementById("my-form-status");
+        var data = new FormData(event.target);
+        fetch(event.target.action, {
+          method: form.method,
+          body: data,
+          headers: {
+              'Accept': 'application/json'
+          }
+        }).then(response => {
+          if (response.ok) {
+            status.innerHTML = "Thanks for your submission!";
+            form.reset()
+          } else {
+            response.json().then(data => {
+              if (Object.hasOwn(data, 'errors')) {
+                status.innerHTML = data["errors"].map(error => error["message"]).join(", ")
+              } else {
+                status.innerHTML = "Oops! There was a problem submitting your form"
+              }
+            })
+          }
+        }).catch(error => {
+          status.innerHTML = "Oops! There was a problem submitting your form"
+        });
+      }
+      form.addEventListener("submit", handleSubmit)
+    </script>
   </body>
 </html>

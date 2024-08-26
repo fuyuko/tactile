@@ -2,3 +2,219 @@
 ---
 
 @import "jekyll-theme-tactile";
+
+$screen-small: 400px;
+$screen-medium: 770px;
+$screen-large: 900px;
+
+$green1: #539a01;   /* bright green - h3 */
+$green2: #467f03;   /* darker green - link */
+$green3: #4a642c;   /* darkest green - h5 */
+
+$shadow: #a2a2a285;
+
+h2{ /* post.title, page.title */
+    font-size: 34px;
+    &.category-head{
+        text-transform: capitalize;
+    }
+    &.post-title{
+        line-height: 1.1em;
+        margin-bottom: 20px;
+    }
+}
+
+h3{
+    color: $green1;
+    font-size: 26px;
+    line-height: 1.2em;
+    text-transform: uppercase;
+}
+
+h4{
+    margin-bottom: 10px;
+    font-size: 22px;
+}
+
+h5{
+    margin-bottom: 10px;
+    color: $green3;
+    font-size: 18px;
+    line-height: 1.1em;
+    font-weight: bold;
+}
+
+p{
+    font-weight: normal;
+    color: #666;
+    clear: left;
+    &.view{ /* author and date in a post entry */
+        font-weight: normal;
+        line-height: 1.3em;
+        color: #aaa;
+        letter-spacing: -1px;
+    }
+}
+
+a{
+    color: $green2;
+    font-weight: 500 !important;
+    &:hover{
+        color: $green1;
+    }
+}
+
+ol, ul{
+    padding-left: 15px;
+
+    li{
+        padding-left: 0px;
+    }
+}
+
+img{
+    margin-top: 5px;
+    &.picture-border{
+        border: solid 8px white;
+        box-shadow: 1px 2px 3px 2px $shadow;
+    }
+    &.float-right{
+        float: right;
+        margin-left: 20px;
+
+        @media screen and (max-width: $screen-small) {
+            display: block;
+            float: none;
+            margin: 0 0 10px 0;
+            width: 95%;
+            max-width: 100% !important;
+
+        }
+    }
+}
+
+.inner{
+    @media screen and (max-width: $screen-small) {
+        max-width: $screen-small;
+    }
+    @media screen and (min-width: $screen-medium) {
+        max-width: $screen-medium;
+    }
+    @media screen and (min-width: $screen-large) {
+        width: $screen-large;
+    }
+}
+
+header{
+    padding-top: 25px;
+    padding-bottom: 10px;
+
+    h1{ /* site title */
+        text-transform: uppercase;
+        font-size: 42px;
+
+        a{
+            color: #303030;
+        }
+    }
+    h2{ /* site description */
+        font-size: 18px;
+        text-transform: lowercase;
+    }
+}
+
+#nav{ /* main navigation */
+    padding: 10px 0px;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        text-align: right;
+
+        li{
+            display: inline;
+            padding: 0px 10px;
+            font-weight: bold;
+            border-right: 1px solid #bbb;
+            &:last-child{
+                border-right: none;
+            }
+
+            a{
+                color: $green1;
+            }
+        }
+    }
+}
+
+.thumbnail{     /* thumbnail image for each post in category page */
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+ul.gallery{     /* image gallery */
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+
+    li{
+        float: left;
+        display: block;
+        list-style: none;
+        img{
+            width: auto;
+        }
+
+    }
+
+    &.three-columns{
+        li{
+            width: 33%;
+            &:nth-child(n+4){      /* 4th to last children */
+                margin-top: -12px;
+                @media screen and (max-width: $screen-medium) {
+                    margin: 0;
+                }
+            }
+            &:nth-last-child(-n+3){  /* last 3 children */
+                margin-bottom: 20px;
+                @media screen and (max-width: $screen-medium) {
+                    margin: 0;
+                }
+            }
+
+            @media screen and (max-width: $screen-medium) {
+                width: 100%;
+                float: none;
+                margin: 0;
+            }
+
+        }
+    }  
+} 
+
+#my-form{ /* contact form in the footer */
+    margin: 10px 0;
+    width: 50%;
+    border-radius: 10px;
+    background-color: #ededed;
+    @media screen and (max-width: $screen-small) {
+        width: 100%;
+    }
+    label, button{
+        display: block;
+        margin-bottom: 5px;
+    }
+    input, textarea{
+        width: 97%;
+        margin-bottom: 10px;
+        padding: 5px;
+        display: block;
+    }
+}
+    

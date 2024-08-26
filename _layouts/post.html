@@ -1,0 +1,18 @@
+---
+layout: default
+---
+<h2 class="post-title">{{ page.title }}</h2>
+<p class="view">{{ page.date | date: "%-d %B %Y" }} by {{ page.author | default: site.author }}
+{% if page.categories %}<br/>
+<small>categories: 
+{% for category in page.categories %}<a a href="/{{ category }}">{{ category }}</a>&nbsp;{% endfor %}
+</small><br/>
+{% endif %}
+{% if page.tags %}
+<small>tags: {{ page.tags | join: " " }}</small>
+{% endif %}
+</p>
+{{content}}
+
+
+
