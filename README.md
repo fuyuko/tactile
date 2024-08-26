@@ -1,28 +1,8 @@
-# The Tactile theme
+# Local Testing Environment for Github Page Using Tactile Theme
 
-[![.github/workflows/ci.yaml](https://github.com/pages-themes/tactile/actions/workflows/ci.yaml/badge.svg)](https://github.com/pages-themes/tactile/actions/workflows/ci.yaml) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-tactile.svg)](https://badge.fury.io/rb/jekyll-theme-tactile)
-
-*Tactile is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/tactile), or even [use it today](#usage).*
+*Tactile is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/tactile).*
 
 ![Thumbnail of Tactile](thumbnail.png)
-
-## Usage
-
-To use the Tactile theme:
-
-1. Add the following to your site's `_config.yml`:
-
-    ```yml
-    remote_theme: pages-themes/tactile@v0.2.0
-    plugins:
-    - jekyll-remote-theme # add this line to the plugins list if you already have one
-    ```
-
-2. Optionally, if you'd like to preview your site on your computer, add the following to your site's `Gemfile`:
-
-    ```ruby
-    gem "github-pages", group: :jekyll_plugins
-    ```
 
 ## Customizing
 
@@ -89,18 +69,6 @@ Templates often rely on URLs supplied by GitHub such as links to your repository
 
 For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
 
-## Roadmap
-
-See the [open issues](https://github.com/pages-themes/tactile/issues) for a list of proposed features (and known issues).
-
-## Project philosophy
-
-The Tactile theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
-
-## Contributing
-
-Interested in contributing to Tactile? We'd love your help. Tactile is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
-
 ### Previewing the theme locally
 
 If you'd like to preview the theme locally (for example, in the process of proposing a change):
@@ -110,7 +78,3 @@ If you'd like to preview the theme locally (for example, in the process of propo
 3. Run `script/bootstrap` to install the necessary dependencies
 4. Run `bundle exec jekyll serve` to start the preview server
 5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
-
-### Running tests
-
-The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` once before the test script will work.
