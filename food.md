@@ -1,14 +1,14 @@
 ---
 layout: default
-title: Travel
+title: Food
 ---
 <div id="archives">
         <div class="archive-group">
-            {% capture category_name %}travel{% endcapture %}
-            <div id="#travel"></div>
-            <h2 class="category-head">travel</h2>
-            <a name="travel"></a>
-            {% for post in site.categories['travel'] %}
+            {% capture category_name %}food{% endcapture %}
+            <div id="#food"></div>
+            <h2 class="category-head">food</h2>
+            <a name="food"></a>
+            {% for post in site.categories['food'] %}
                 <article class="archive-item">
                     <h3><a href="{{ site.baseurl }}{{ post.url }}">{{post.title}}</a></h3>  
                     <div class="thumbnail">
