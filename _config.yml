@@ -3,3 +3,6 @@ description: Fuyuko Gratton's Personal Site
 theme: jekyll-theme-tactile
 permalink: pretty
 author: Fuyuko Gratton
+url: "https://fuyuko.net" # the base hostname & protocol for your site
+plugins:
+  - jekyll-sitemap
